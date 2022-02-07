@@ -6,10 +6,8 @@
 class RenderComponent {
 protected:
 	static std::vector<RenderComponent*> components;
-
 	RenderComponent();
-	// static 
-	virtual void Render() = 0;
+	virtual void Render();
 };
 
 #endif

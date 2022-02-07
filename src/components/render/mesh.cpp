@@ -3,3 +3,7 @@
 Mesh::Mesh(): RenderComponent() {
 
 }
+
+void Mesh::Render() {
+	
+}
