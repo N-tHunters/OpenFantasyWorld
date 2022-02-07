@@ -26,3 +26,4 @@ add_executable(${PROJECT_NAME}
   ${SOURCE_FILES})
 
 set(CMAKE_CXX_FLAGS, "${CMAKE_CXX_FLAGS} -Wall -g")
+set(CXX_STANDARD 17)
