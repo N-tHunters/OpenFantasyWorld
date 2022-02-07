@@ -1,3 +1,6 @@
+#include <cstdio>
+
 int main() {
-	return 0;
+  printf("%s\n", "Hello, world!");
+  return 0;
 }
