@@ -1,5 +1,7 @@
 #include <components/render/rendercomponent.hpp>
 
+std::vector<RenderComponent*> RenderComponent::components;
+
 RenderComponent::RenderComponent() {
-	render_components.push_back(this);
+	RenderComponent::components.push_back(this);
 }
