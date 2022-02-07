@@ -1,10 +1,12 @@
 #ifndef RENDER_MESH_HPP
 #define RENDER_MESH_HPP
 
-class Mesh {
+#include <components/render/rendercomponent.hpp>
+
+class Mesh: public RenderComponent {
 public:
   Mesh();
-  void render() override;
+  void Render() override;
 };
 
 #endif
