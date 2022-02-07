@@ -25,5 +25,44 @@ add_executable(${PROJECT_NAME}
   ${HEADER_FILES}
   ${SOURCE_FILES})
 
+# Find required packages and libraries
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+
+# OpenGL
+find_package(OpenGL REQUIRED)
+
+# GLM
+find_package(GLM REQUIRED)
+message(STATUS "GLM included at ${GLM_INCLUDE_DIR}")
+
+# GLFW
+find_package(GLFW3 REQUIRED)
+message(STATUS "GLFW3 included at ${GLFW3_INCLUDE_DIR}")
+message(STATUS "GLFW3 library found at ${GLFW3_LIBRARY}")
+
+# GLEW
+find_package(GLEW)
+if(NOT GLEW_FOUND)
+  message(STATUS "GLEW is not found by default script, setting it manually (works for Windows only)")
+  set(GLEW_LIBRARY "${CMAKE_SOURCE_DIR}/lib/glew32.lib")
+endif()
+
+if (NOT WIN32)
+  target_link_libraries(${PROJECT_NAME} GLEW::GLEW)
+endif()
+
+# Assimp
+find_package(ASSIMP REQUIRED)
+message(STATUS "ASSIMP included at ${GLFW3_INCLUDE_DIR}")
+
+set(LIBS
+  ${GLFW3_LIBRARY}
+  ${OPENGL_LIBRARY}
+  ${GLEW_LIBRARY}
+  ${ASSIMP_LIBRARIES}
+  )
+
+target_link_libraries(${PROJECT_NAME} ${LIBS})
+
 set(CMAKE_CXX_FLAGS, "${CMAKE_CXX_FLAGS} -Wall -g")
 set(CXX_STANDARD 17)
