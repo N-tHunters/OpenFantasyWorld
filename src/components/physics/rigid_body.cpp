@@ -9,8 +9,9 @@ void RigidBody::Update(float dt) {
 	transform_component->position += velocity * dt;
 
 	if (transform_component->position.y > 1.0f) {
-		velocity.y -= 9.81f * dt;
+		velocity.y -= 0.81f * dt;
 	} else {
 		velocity.y = 0.0f;
+		transform_component->position.y = 1.0f;
 	}
 }

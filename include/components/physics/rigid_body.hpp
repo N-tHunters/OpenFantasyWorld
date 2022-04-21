@@ -6,10 +6,12 @@
 #include <glm/glm.hpp>
 
 class RigidBody : public Component<RigidBody> {
-	glm::vec3 velocity;
 public:
+	glm::vec3 velocity;
+
 	RigidBody(Entity* entity);
 	void Update(float dt);
+	void SetSpeed(glm::vec3);
 };
 
 #endif

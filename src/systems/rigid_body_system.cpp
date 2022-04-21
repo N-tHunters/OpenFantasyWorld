@@ -5,7 +5,8 @@ RigidBodySystem::RigidBodySystem() {
 }
 
 void RigidBodySystem::Update(float dt) {
-	for (int i = 0; i < RigidBody::GetComponentsCount(); i ++) {
-		RigidBody::GetComponent(i)->Update(dt);
+	int components_count = RigidBody::GetComponentsCount();
+	for (int i = 0; i < components_count; i ++) {
+		static_cast<RigidBody*>(RigidBody::GetComponent(i))->Update(dt);
 	}
 }

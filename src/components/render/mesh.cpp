@@ -34,10 +34,11 @@ void Mesh::Render() {
 	glm::mat4 view = glm::mat4(1.0f);
 	glm::mat4 cameraRot = glm::mat4(1.0f);
 	glm::mat4 projection;
+	glm::vec3 rotation = static_cast<TransformComponent*>(entity->GetComponent("TransformComponent"))->rotation;
 	// glm::vec3 cameraPosition = glm::vec3(camera->getPosition().x, camera->getPosition().y, camera->getPosition().z);
-	// model = glm::rotate(model, glm::radians(this->obj->getRotationX()), glm::vec3(1.0f, 0.0f, 0.0f));
-	// model = glm::rotate(model, glm::radians(this->obj->getRotationY()), glm::vec3(0.0f, 1.0f, 0.0f));
-	// model = glm::rotate(model, glm::radians(this->obj->getRotationZ()), glm::vec3(0.0f, 0.0f, 1.0f));
+	model = glm::rotate(model, glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
+	model = glm::rotate(model, glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
+	model = glm::rotate(model, glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
 	cameraRot = glm::rotate(cameraRot, glm::radians(MeshRenderingSystem::camera->rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
 	cameraRot = glm::rotate(cameraRot, glm::radians(MeshRenderingSystem::camera->rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
 	cameraRot = glm::rotate(cameraRot, glm::radians(MeshRenderingSystem::camera->rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
@@ -46,10 +47,11 @@ void Mesh::Render() {
 
 	shader->Use();
 
-	// modelLoc = glGetUniformLocation(shader->Program, "model");
+	GLuint modelLoc = glGetUniformLocation(shader->Program, "model");
 	GLuint projLoc = glGetUniformLocation(shader->Program, "projection");
 	GLuint viewLoc = glGetUniformLocation(shader->Program, "view");
 	GLuint camRotLoc = glGetUniformLocation(shader->Program, "cameraRot");
+	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 	glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 	glUniformMatrix4fv(camRotLoc, 1, GL_FALSE, glm::value_ptr(cameraRot));

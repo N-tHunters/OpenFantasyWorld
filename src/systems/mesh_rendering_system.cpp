@@ -6,7 +6,7 @@ glm::vec2 MeshRenderingSystem::resolution;
 bool MeshRenderingSystem::should_close;
 
 MeshRenderingSystem::MeshRenderingSystem() {
-  MeshRenderingSystem::camera = new Camera(glm::vec3(0.0f, 1.0f, 10.0f), glm::vec3(0.0f));
+  MeshRenderingSystem::camera = new Camera(glm::vec3(0.0f, 1.0f, 10.0f), glm::vec3(0.0f, -90.0f, 0.0f));
   MeshRenderingSystem::should_close = false;
   glfwInit();
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -41,12 +41,13 @@ MeshRenderingSystem::MeshRenderingSystem() {
 }
 
 void MeshRenderingSystem::Render() {
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	int component_count = RenderComponent::GetComponentsCount();
+
 	for (int i = 0; i < component_count; i ++) {
-		RenderComponent::GetComponent(i)->Render();
+		static_cast<RenderComponent*>(RenderComponent::GetComponent(i))->Render();
 	}
 
     glFinish();

@@ -6,6 +6,7 @@
 
 class CameraHolder: public Component<CameraHolder> {
 public:
+	bool copy_rotation;
 	static CameraHolder* camera_holder;
 	CameraHolder(Entity*);
 };

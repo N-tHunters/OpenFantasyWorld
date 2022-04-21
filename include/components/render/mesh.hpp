@@ -8,6 +8,7 @@
 
 // Components
 #include <components/render/render_component.hpp>
+#include <components/physics/transform_component.hpp>
 
 // Assets
 #include <assets/shader.hpp>

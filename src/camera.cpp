@@ -6,9 +6,9 @@ Camera::Camera(glm::vec3 pos, glm::vec3 rot) {
 }
 
 void Camera::Normalize() {
-	if (rotation.x > 180.0f) {
-		rotation.x = 180.0f;
-	} else if (rotation.x < -180.0f) {
-		rotation.x = -180.0f;
+	if (rotation.x > 90.0f) {
+		rotation.x = 90.0f;
+	} else if (rotation.x < -90.0f) {
+		rotation.x = -90.0f;
 	}
 }
