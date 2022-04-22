@@ -1,3 +1,4 @@
+#define STB_IMAGE_IMPLEMENTATION
 #include <texture.hpp>
 
 unsigned char* LoadImage(std::string path, int* width, int* height) {
