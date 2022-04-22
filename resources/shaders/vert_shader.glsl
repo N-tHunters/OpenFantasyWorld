@@ -14,5 +14,5 @@ out vec2 tex_coord;
 void main() {
 	shadow = (dot(-normalize((model * vec4(normal, 1)).xyz), vec3(0.0f, 0.0f, -1.0f)) + 1.0f) * 0.5f;
 	gl_Position = projection * cameraRot * view * model * vec4(position, 1.0);
-    tex_coord = vec2(tex_coord.y, 1.0 - tex_coord_in.y);
+    tex_coord = vec2(tex_coord_in.x, 1.0 - tex_coord_in.y);
 }
