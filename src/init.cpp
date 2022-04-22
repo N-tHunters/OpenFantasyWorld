@@ -2,7 +2,7 @@
 
 void Init() {
 	Entity* teapot = new Entity();
-	Mesh* mesh = new Mesh(teapot, new Model("resources/models/teapot.obj"));
+	Mesh* mesh = new Mesh(teapot, new Model("resources/models/teapot.obj"), Texture::GetTexture("teapot"));
 	ConstantRotation* cr = new ConstantRotation(teapot);
 	TransformComponent* tc = new TransformComponent(teapot, glm::vec3(0.0));
 	InputSystem::player = new Entity();

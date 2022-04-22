@@ -13,6 +13,7 @@
 // Assets
 #include <assets/shader.hpp>
 #include <assets/model.hpp>
+#include <texture.hpp>
 
 // Systems
 #include <systems/mesh_rendering_system.hpp>
@@ -23,9 +24,10 @@
 class Mesh: public RenderComponent {
   Shader* shader;
   GLuint VAO, VBO, EBO;
+  Texture* texture;
   int size;
 public:
-  Mesh(Entity* entity, Model* model);
+  Mesh(Entity* entity, Model* model, Texture* texture);
   /**
    * @brief      Draws mesh
    */

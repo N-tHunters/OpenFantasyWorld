@@ -1,6 +1,6 @@
 #include <components/render/mesh.hpp>
 
-Mesh::Mesh(Entity* entity, Model* model): RenderComponent(entity, "Mesh") {
+Mesh::Mesh(Entity* entity, Model* model, Texture* texture): RenderComponent(entity, "Mesh") {
 	shader = new Shader("resources/shaders/vert_shader.glsl", "resources/shaders/frag_shader.glsl");
 
 	std::vector<GLfloat> vertices = model->vertices;

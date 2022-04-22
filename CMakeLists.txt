@@ -19,6 +19,8 @@ file(GLOB_RECURSE HEADER_FILES
   ${CMAKE_SOURCE_DIR}/include/*.hpp)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/thirdparty)
+link_directories(${CMAKE_SOURCE_DIR}/thirdparty)
 
 add_executable(${PROJECT_NAME}
   ${CMAKE_SOURCE_DIR}/src/main.cpp
@@ -38,6 +40,10 @@ message(STATUS "GLM included at ${GLM_INCLUDE_DIR}")
 find_package(GLFW3 REQUIRED)
 message(STATUS "GLFW3 included at ${GLFW3_INCLUDE_DIR}")
 message(STATUS "GLFW3 library found at ${GLFW3_LIBRARY}")
+
+# STB_IMAGE
+find_package(STB_IMAGE REQUIRED)
+message(STATUS "STB_IMAGE included at ${STB_IMAGE_INCLUDE_DIR}")
 
 # GLEW
 find_package(GLEW)
@@ -59,12 +65,13 @@ set(LIBS
   ${OPENGL_LIBRARY}
   ${GLEW_LIBRARY}
   ${ASSIMP_LIBRARIES}
+  ${STB_IMAGE_LIBRARY}
   )
 
 target_link_libraries(${PROJECT_NAME} ${LIBS})
 
 set(CMAKE_CXX_FLAGS, "${CMAKE_CXX_FLAGS} -Wall -g")
-set(CXX_STANDARD 17)
+set(CXX_STANDARD 20)
 
 
 
