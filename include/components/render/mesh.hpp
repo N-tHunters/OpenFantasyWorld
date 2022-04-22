@@ -13,7 +13,7 @@
 // Assets
 #include <assets/shader.hpp>
 #include <assets/model.hpp>
-#include <texture.hpp>
+#include <assets/texture.hpp>
 
 // Systems
 #include <systems/mesh_rendering_system.hpp>
