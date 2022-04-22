@@ -10,8 +10,8 @@
 #endif
 
 #include <components/render/render_component.hpp>
-#include <systems/mesh_rendering_system.hpp>
 #include <camera.hpp>
+#include <glm/glm.hpp>
 
 class MeshRenderingSystem {
 	static GLFWwindow* window;
