@@ -36,7 +36,7 @@ Texture* Texture::GetTexture(std::string name) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     int width, height;
-    unsigned char* image = LoadImage("resources/textures" + name + ".png", &width, &height);
+    unsigned char* image = LoadImage("resources/textures/" + name + ".png", &width, &height);
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
     glGenerateMipmap(GL_TEXTURE_2D);

@@ -25,8 +25,12 @@ Mesh::Mesh(Entity* entity, Model* model, Texture* texture): RenderComponent(enti
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(2);
 
 	glBindVertexArray(0); // Unbind VAO
+
+	this->texture = texture;
 }
 
 void Mesh::Render() {
@@ -46,6 +50,9 @@ void Mesh::Render() {
 	projection = glm::perspective(glm::radians(45.0f), 1366.0f / 768.0f, 0.1f, 1000.0f);
 
 	shader->Use();
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texture->id);
 
 	GLuint modelLoc = glGetUniformLocation(shader->Program, "model");
 	GLuint projLoc = glGetUniformLocation(shader->Program, "projection");

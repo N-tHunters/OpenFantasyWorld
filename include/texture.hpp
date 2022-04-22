@@ -10,9 +10,8 @@
 
 unsigned char* LoadImage(std::string path, int* width, int* height);
 
-class Texture {
+struct Texture {
     GLuint id;
-public:
     static std::unordered_map<std::string, Texture*> textures;
     static Texture* GetTexture(std::string name);
     Texture(GLuint id);

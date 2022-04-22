@@ -29,8 +29,6 @@ LIST(REMOVE_ITEM SOURCE_FILES ${full_path_client_cpp})
 include_directories(${CMAKE_SOURCE_DIR}/include)
 include_directories(${CMAKE_SOURCE_DIR}/thirdparty)
 
-add_library(STB_IMAGE "thirdparty/stb_image.h")
-
 add_executable(${PROJECT_NAME}
   ${CMAKE_SOURCE_DIR}/src/main.cpp
   ${HEADER_FILES}
