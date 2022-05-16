@@ -18,6 +18,7 @@ class ServerSocket {
     public:
         ServerSocket();
         void receive(char * buffer, size_t buffer_size, struct sockaddr_in * from);
+        void send(char * buffer, size_t buffer_size, struct sockaddr_in * to);
 };
 
 #endif // SERVER_SOCKET_H_

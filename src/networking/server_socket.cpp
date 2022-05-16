@@ -23,3 +23,9 @@ void ServerSocket::receive(char * buffer, size_t buffer_size, struct sockaddr_in
     unsigned int from_size = sizeof(struct sockaddr_in);
     recvfrom(sock, buffer, buffer_size, 0, (struct sockaddr *)from, &from_size);
 }
+
+
+void ServerSocket::send(char * buffer, size_t buffer_size, struct sockaddr_in *to) {
+    unsigned int to_size = sizeof(struct sockaddr_in);
+    sendto(sock, buffer, buffer_size, 0, (struct sockaddr *)to, to_size);
+}
